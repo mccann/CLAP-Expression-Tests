@@ -6,6 +6,14 @@ Two plugins are included
  - **Note Generator** -- generate the problematic note event sequences
  - **Note Logger** --  view CLAP events that are received on an input port
 
+### Revision History
+ 
+ - R1 - April 9, 2024  
+    - Updated to reflect exact match ``PCKN`` tuple [per discussion](https://github.com/free-audio/interop-tracker/issues/58#issuecomment-2043847619)
+ 
+ - R0 - March 27, 2024 
+    - Initial Revision
+
 ## Expectation
 
 NOTE_ON and NOTE_EXPRESSION sent on the same sample should turn off any expression parameter smoothing by the host.
@@ -43,8 +51,8 @@ Tuning appears to work as expected.
 Note Generator:
 ```
 # Note On, and Note Expression at sample 0 of the same block
-001446:256-0000:0 NOTE_ON              note_id:     -1 port: 0 channel: 0 key: 60 | 1.000000 VELOCITY
-001446:256-0000:0 NOTE_EXPRESSION      note_id:     -1 port: 0 channel: 0 key: 60 | 1.000000 TUNING
+001446:256-0000:0 NOTE_ON              note_id:   1024 port: 0 channel: 0 key: 60 | 1.000000 VELOCITY
+001446:256-0000:0 NOTE_EXPRESSION      note_id:   1024 port: 0 channel: 0 key: 60 | 1.000000 TUNING
 # A second later, Note Off
 001619:256-0000:0 NOTE_OFF             note_id:     -1 port: 0 channel: 0 key: 60 | 1.000000 VELOCITY
 ```
@@ -67,8 +75,8 @@ Pressure and Brightness do not work as expected.
  Note Generator for Pressure (Brightness looks the same)
 ```
 # Note On, and Note Expression at sample 0 of the same block
-043013:256-0000:0 NOTE_ON              note_id:     -1 port: 0 channel: 0 key: 64 | 1.000000 VELOCITY   
-043013:256-0000:0 NOTE_EXPRESSION      note_id:     -1 port: 0 channel: 0 key: 64 | 1.000000 PRESSURE
+043013:256-0000:0 NOTE_ON              note_id:   1025 port: 0 channel: 0 key: 64 | 1.000000 VELOCITY   
+043013:256-0000:0 NOTE_EXPRESSION      note_id:   1025 port: 0 channel: 0 key: 64 | 1.000000 PRESSURE
 # A second later, Note Off
 043186:256-0000:0 NOTE_OFF             note_id:     -1 port: 0 channel: 0 key: 64 | 1.000000 VELOCITY
 ```

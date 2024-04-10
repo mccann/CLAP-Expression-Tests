@@ -170,9 +170,6 @@ inline auto EventString(const clap_event_header* ev) -> std::string {
         svType = strType;
     }
 
-    return  fmt::format(
-                "{:04d}:{:x} {:20s} {}",
-                ev->time, ev->flags, svType, strExtra 
-            );
+    return  fmt::format( "{:04d}:{:x} {:20s} {}", ev->time, ev->flags, svType, strExtra );
 };
 
