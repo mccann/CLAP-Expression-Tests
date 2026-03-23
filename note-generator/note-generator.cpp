@@ -194,7 +194,7 @@ static const clap_plugin_descriptor_t pluginDescriptor = {
 };
 static const clap_plugin_note_ports_t extensionNotePorts    = makeExtensionNotePorts<false>();
 static const clap_plugin_gui_t extensionGUI                 = makeExtensionGUI<NoteGenerator>();
-static const clap_plugin_t pluginClass                      = makePluginClass<NoteGenerator,&extensionNotePorts,&extensionGUI>(&pluginDescriptor);
+static const clap_plugin_t pluginClass                      = makePluginClass<NoteGenerator,&extensionNotePorts,&extensionGUI,nullptr>(&pluginDescriptor);
 static const clap_plugin_factory_t pluginFactory            = makePluginFactory<NoteGenerator,&pluginClass>();
 extern "C" const clap_plugin_entry_t clap_entry             = makeEntry<&pluginFactory>();
 

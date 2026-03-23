@@ -30,7 +30,7 @@ constexpr auto makeExtensionNotePorts() -> clap_plugin_note_ports_t {
     };
 }
 
-template <typename T,const clap_plugin_note_ports_t* notePorts, const clap_plugin_gui_t* guiPlugin>
+template <typename T,const clap_plugin_note_ports_t* notePorts, const clap_plugin_gui_t* guiPlugin, const clap_plugin_voice_info* voiceInfo>
 constexpr auto makePluginClass(const clap_plugin_descriptor_t* desc) -> clap_plugin_t {
     return {
 	.desc = desc,
@@ -64,6 +64,7 @@ constexpr auto makePluginClass(const clap_plugin_descriptor_t* desc) -> clap_plu
 	.get_extension = [] (const clap_plugin *plugin, const char *id) -> const void * {
 		if (0 == strcmp(id, CLAP_EXT_NOTE_PORTS )) return notePorts;
         if (0 == strcmp(id, CLAP_EXT_GUI )) return guiPlugin;
+        if (0 == strcmp(id, CLAP_EXT_VOICE_INFO )) return voiceInfo;
 		return nullptr;
 	},
 

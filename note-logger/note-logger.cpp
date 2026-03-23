@@ -4,6 +4,7 @@
 #include "../common/plugin.hpp"
 #include "../common/gui.hpp"
 #include "../common/event-logger.hpp"
+#include "../common/polyphonic-voice-info.hpp"
 
 #include "note-logger-gui.hpp"
 
@@ -47,6 +48,7 @@ static const clap_plugin_descriptor_t pluginDescriptor = {
 
 static const clap_plugin_note_ports_t extensionNotePorts    = makeExtensionNotePorts<true>();
 static const clap_plugin_gui_t extensionGUI                 = makeExtensionGUI<NoteLogger>();
-static const clap_plugin_t pluginClass                      = makePluginClass<NoteLogger,&extensionNotePorts,&extensionGUI>(&pluginDescriptor);
+static const clap_plugin_voice_info_t extensionIsPolyphonic = makeExtensionPolyphonicVoiceInfo();
+static const clap_plugin_t pluginClass                      = makePluginClass<NoteLogger,&extensionNotePorts,&extensionGUI,&extensionIsPolyphonic>(&pluginDescriptor);
 static const clap_plugin_factory_t pluginFactory            = makePluginFactory<NoteLogger,&pluginClass>();
 extern "C" const clap_plugin_entry_t clap_entry             = makeEntry<&pluginFactory>();
